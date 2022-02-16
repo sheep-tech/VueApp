@@ -42,7 +42,7 @@ export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: String,
-  },
+  }
 });
 </script>
 
