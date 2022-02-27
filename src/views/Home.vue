@@ -1,44 +1,28 @@
 <template>
   <div>
-    <input @change="onFileSelected" type="file" accept="image/png, image/gif, image/jpeg">
+    <Header />
   </div>
-  
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+
+  <JobComponent :jobs="jobs" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent, ref } from 'vue';
+import JobComponent from '@/components/JobComponent.vue';
+import { Job } from '@/model/Job';
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    HelloWorld,
+  setup() {
+
+    const jobs = ref<Job[]>([
+      { id: 1, name: "a", location: "l1" },
+      { id: 2, name: "b", location: "l2" },
+      { id: 3, name: "c", location: "l3" }
+    ])
+
+    return { jobs }
+
   },
-  data() {
-   return {
-    count: 1,
-   }
-  },
-  methods: {
-    onFileSelected(event: any) {
-      console.log(event)
-      const selectedFile = event.target.files[0];
-      const formData = new FormData()
-      if (selectedFile) {
-        formData.append('image', selectedFile, selectedFile.name);
-      alert(selectedFile.name)
-      // post to backend  server
-    }
-    
-    // onUpload() {
-      
-    //   }
-    }
-  }
-  });
+  components: { JobComponent }
+});
 </script>

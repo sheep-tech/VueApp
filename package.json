@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "pwa": {
-  "name": "FlowerPower IV"
+    "name": "FlowerPower IV"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
